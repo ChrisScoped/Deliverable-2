@@ -1,2 +1,2 @@
 # Deliverable-2
-This repository is used to load a dataset and manipulate the data to our needs on the cars in Washinton state
+This repository is used to load a dataset and manipulate the data to our needs on the cars in Washington state
