@@ -3,7 +3,7 @@ import matplotlib.pyplot as plt
 
 df = pd.read_csv("Electric_Vehicle_Population_Data.csv")
 
-# I'm for now using only 20 samples to avoid messy plots
+# I'm for now using only 25 samples to avoid messy plots
 maker_col = df["Make"].head(25)
 
 plt.hist(maker_col)
@@ -18,10 +18,13 @@ for make in maker_col:
 
 print(df["Base MSRP"])
 
-
+#plotting data points for x and y axes
 x_data=df["Make"].head(25)
 y_data=df["Model Year"].head(25)
-
-plt.figure(figsize=(10,10))
+#printing and labeling scatter plot
+plt.figure(figsize=(15,12))
+plt.title("Scatter Plot Make v. Year")
+plt.xlabel("Make")
+plt.ylabel("Model Year")
 plt.scatter(x_data, y_data)
 
