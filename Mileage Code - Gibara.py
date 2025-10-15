@@ -18,7 +18,7 @@ for make in maker_col:
 
 print(df["Base MSRP"])
 
-#plotting data points for x and y axes
+#plotting data points for x (make) and y (model year)
 x_data=df["Make"].head(25)
 y_data=df["Model Year"].head(25)
 #printing and labeling scatter plot
