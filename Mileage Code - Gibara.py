@@ -1,30 +1,18 @@
 import pandas as pd
 import matplotlib.pyplot as plt
 
-df = pd.read_csv("Electric_Vehicle_Population_Data.csv")
+# Load the filtered CSV dataset
+df = pd.read_csv("filtered_output.csv")
 
-# I'm for now using only 25 samples to avoid messy plots
-maker_col = df["Make"].head(25)
-
-plt.hist(maker_col)
-
-maker_without_tesla = []
-
-# I'm removing tesla from my dataset
-for make in maker_col:
-    if make != "TESLA":
-        maker_without_tesla.append(make)
-
-
-print(df["Base MSRP"])
-
-#plotting data points for x (make) and y (model year)
-x_data=df["Make"].head(25)
-y_data=df["Model Year"].head(25)
-#printing and labeling scatter plot
-plt.figure(figsize=(15,12))
-plt.title("Scatter Plot Make v. Year")
-plt.xlabel("Make")
-plt.ylabel("Model Year")
-plt.scatter(x_data, y_data)
-
+# Convert relevant columns to numeric types (force invalid strings to NaN)
+df["Model Year"] = pd.to_numeric(df["Model Year"], errors="coerce")
+df["Electric Range"] = pd.to_numeric(df["Electric Range"], errors="coerce")
+df["Base MSRP"] = pd.to_numeric(df["Base MSRP"], errors="coerce")
+# Scatter plot: Electric Range vs Model Year
+# Purpose: examine correlation / spread: do newer years have higher range?
+plt.figure()
+plt.scatter(df["Model Year"], df["Electric Range"], alpha=0.6)
+plt.title("Electric Range vs Model Year")
+plt.xlabel("Model Year")
+plt.ylabel("Electric Range (miles)")
+plt.show()

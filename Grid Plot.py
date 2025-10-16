@@ -1,14 +1,15 @@
 import pandas as pd
 import matplotlib.pyplot as plt
-
+# Load the filtered CSV dataset
 df = pd.read_csv("Electric_Vehicle_Population_Data.csv")
 
-#Convert relevant columns to numerical values
+# Convert relevant columns to numeric types (force invalid strings to NaN)
 df["Model Year"] = pd.to_numeric(df["Model Year"], errors="coerce")
 df["Electric Range"] = pd.to_numeric(df["Electric Range"], errors="coerce")
 df["Base MSRP"] = pd.to_numeric(df["Base MSRP"], errors="coerce")
 
-#Plotting Grid
+# Grid plot: Average Base MSRP per Model Year
+# Purpose: show MSRP trend over years with grid background for clarity
 avg_msrp = df.groupby("Model Year")["Base MSRP"].mean()
 plt.figure()
 plt.plot(avg_msrp.index, avg_msrp.values, color="green", linewidth=2)

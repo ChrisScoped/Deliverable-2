@@ -1,14 +1,15 @@
 import pandas as pd
 import matplotlib.pyplot as plt
-
+# Load the filtered CSV dataset
 df = pd.read_csv("Electric_Vehicle_Population_Data.csv")
 
-#Convert relevant columns to numerical values
+# Convert relevant columns to numeric types (force invalid strings to NaN)
 df["Model Year"] = pd.to_numeric(df["Model Year"], errors="coerce")
 df["Electric Range"] = pd.to_numeric(df["Electric Range"], errors="coerce")
 df["Base MSRP"] = pd.to_numeric(df["Base MSRP"], errors="coerce")
 
-#Histrogram
+#Histrogram: Distribution of Electric Range
+# Purpose: compare electric range to number of vehicles
 ranges = df["Electric Range"].dropna()
 plt.figure(figsize=(8, 5))
 plt.hist(ranges, bins=30, color="skyblue", edgecolor="black")
