@@ -97,3 +97,18 @@ plt.xlabel("Model Year")
 plt.ylabel("Average Base MSRP ($)")
 plt.grid(True)
 plt.show()
+
+#PART 4 pie charts
+# Convert relevant columns to numeric types (force invalid strings to NaN)
+df["Model Year"] = pd.to_numeric(df["Model Year"], errors="coerce")
+df["Electric Range"] = pd.to_numeric(df["Electric Range"], errors="coerce")
+df["Base MSRP"] = pd.to_numeric(df["Base MSRP"], errors="coerce")
+
+# Pie chart: EV type distribution
+# Purpose: see the market share (by count) of different electric vehicle types (BEV, PHEV, etc.)
+type_counts = df["Electric Vehicle Type"].value_counts()
+plt.figure()
+plt.pie(type_counts.values, labels=type_counts.index, autopct="%1.1f%%", startangle=140)
+plt.title("Distribution of Electric Vehicle Types")
+plt.show()
+
