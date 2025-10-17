@@ -12,6 +12,36 @@ elif i>=100:
         print("long electric range")
 else:
         print("short electric range")
+        
+# I'm for now using only 25 samples to avoid messy plots
+maker_col = df["Make"].head(25)
+
+plt.hist(maker_col)
+
+maker_without_tesla = []
+
+# I'm removing tesla from my dataset
+for make in maker_col:
+    if make != "TESLA":
+        maker_without_tesla.append(make)
+
+
+print(df["Base MSRP"])
+#plotting data points for x (make) and y (model year)
+x_data=df["Make"].head(25)
+y_data=df["Model Year"].head(25)
+#printing and labeling scatter plot
+plt.figure(figsize=(15,12))
+plt.title("Scatter Plot Make v. Year")
+plt.xlabel("Make")
+plt.ylabel("Model Year")
+plt.scatter(x_data, y_data)
+
+df_filtered = df[df["Electric Range"] > 29]
+print(df_filtered.head())
+df_filtered.to_csv("filtered_output.csv", index=False)
+
+#part 3 filtering the long
 
 # Ranges of electric vehicles
 electric_ranges = [0, 0, 291, 84, 26, 293, 322, 6, 259, 53]
