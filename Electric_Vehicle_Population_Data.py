@@ -5,14 +5,7 @@ import matplotlib.pyplot as plt
 df = pd.read_csv("Electric_Vehicle_Population_Data.csv")
 
 #PART 3 for short or long range (nicholas) and long short and average range (chris)
-i=input("Enter electric range")
-if i==0:
-        print("range has not been tested")
-elif i>=100:
-        print("long electric range")
-else:
-        print("short electric range")
-        
+
 # I'm for now using only 25 samples to avoid messy plots
 maker_col = df["Make"].head(25)
 
@@ -69,17 +62,6 @@ print("Filtered ranges:", filtered_ranges)
 print()
 print(f"We removed {len(vehicle_names) - len(filtered_names)} untested vehicles")
 
-# Conditional for electric range
-print("\n--- Range Classification ---")
-n = int(input("Enter Electric Range: "))
-if n == 0:
-    print("Range has not been tested")
-elif n <= 100:
-    print("Short Range")
-elif n > 100 and n <= 300:
-    print("Average Range")
-else:
-    print("Long Range")
 
 # Category each car falls into
 print("\n--- Vehicle Categories ---")
